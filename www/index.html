@@ -1,0 +1,856 @@
+<!--
+    Winhweel.js pins and sound example by Douglas McKechie @ www.dougtesting.net
+    See website for tutorials and other documentation.
+
+    The MIT License (MIT)
+
+    Copyright (c) 2018 Douglas McKechie
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
+
+    ============================================================================
+    Note:
+        Tick Sound was recorded by DeepFrozenApps and was downloaded from http://soundbible.com/2044-Tick.html
+        It has an attribution 3.0 licence.
+-->
+<html>
+    <head>
+        <title>HTML5 Canvas Winning Wheel</title>
+		  
+			<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi">
+			
+			  <link rel="stylesheet" href="onsen/css/onsenui.css">
+			  <link rel="stylesheet" href="onsen/css/onsen-css-components.min.css">
+			  <script src="onsen/js/onsenui.min.js"></script>
+			  <script src="onsen/js/jquery.min.js"></script>
+			<link rel="stylesheet" href="css/main.css" type="text/css" />
+			<link rel="stylesheet" href="css/index.css" type="text/css" />
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/index2.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/spin_function.js"></script>
+        <script type="text/javascript" src="js/Winwheel.js"></script>
+        <script type="text/javascript" src="js/Winwheel.min.js"></script>
+        <script type="text/javascript" src="js/TweenMax.min.js"></script>
+        <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+    </head>
+    <body >
+	<ons-navigator id="my_navigator" animation="slide" page="menu.html"></ons-navigator>
+	<!--Login Page  -->
+	<template id="login_page.html">
+	
+	<ons-page id="login_page">
+			 <div id="div_background" >
+				<div align="center" >
+					<div class="center" id="rounded_div">
+					  <input class="center rounded_input" id="login_username" type="text" class="" placeholder="Username" required/>
+					  <i id="login_username_icon" style="font-size:30px;" class=""></i>
+					</div>
+					<div class="center" id="rounded_div_2">
+					  <input class="center rounded_input"  id="login_password" type="password" class="" placeholder="Password" required/>
+					  <i id="password_icon"  style="font-size:30px;" class=""></i>
+					</div>
+					<div class="center" >
+					  <button class="center button_div 3d_button" id="login" >Login</button>
+					</div>
+					<div id="facebook_login">
+						<img src="layout/facebook_login.png">
+					</div>
+					
+					<div id="or">
+						<img src="layout/or.png">
+					</div>
+					<div id="sign_up_image">
+						<img id="signup" src="layout/signup.png">
+					</div>
+					
+				  
+				 
+				 
+				</div>
+				 
+			 </div>
+			
+		</ons-page>
+	</template>
+		
+		
+		<!-- Registration Page -->
+		<template id="registration_page.html">
+			<ons-page id="registration_page">
+				  <div id="div_background">
+					<div align="center" >
+						<div align="center" id="register_rounded_div"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Username" id="username"/>
+							<i id="reg_username_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Phone No" id="phonenumber" />
+							<i id="phonenumber_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="password" placeholder="Password" id="password"/>
+							<i id="reg_password_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="password" placeholder="Confirm Password" id="confirm_password" />
+							<i id="confirm_password_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" class="register_radio"> 
+							<input  type="radio" value="Male" name="gender" style="margin-left:10%" checked/>Male
+							<input  type="radio" value="Female" name="gender" style="margin-left:30%"/>Female
+							
+						</div>
+						<div align="center" id="3d_button"> 
+							<button id="register_user" class="button_div">Sign Up</button>
+						</div>
+						<div ><center><img id="or" src="layout/or.png"></center></div>
+									
+						<div><center><img id="login_image" src="layout/login.png"></center></div>
+					</div>
+				
+				</div>
+			</ons-page> 
+		</template>
+		
+		<!-- game area -->
+		<template id="main_menu_page.html">
+			<ons-page id="main_menu_page">
+			 <div id="div_background">
+				<div align="center" id="popup" class="center ontop">
+							<div align="center" class="center ontop-inner">
+							<div style="font-weight:bold;padding-top:110px;color:white;font-size:14px">SCORE</div>
+							<div id="score_username" style="font-weight:bold;margin-top:50px;color:white;font-size:30px;"></div>
+							<div  style="font-weight:bold;margin-top:150px;margin-left:10px; color:white;font-size:25px;">WON <span style="margin-left:75px;font-size:30px;color:red;" id="score_value"></span></div>
+								<center><i  id="exit_msg" class="fa fa-times-circle" style="color:red;font-size:60px; font-weight:bold;margin-top:5px;"></i></center>
+								
+							</div>
+				</div>
+				
+				<div id="spin_area" >
+					<div style="position:absolute; top:0px; left:15px; z-index:1;">
+						<div style="float:left;">
+							<img class="button_spin" id="spin_button" src="layout/spin_button.png" alt="Spin"  />
+						</div>
+						<div style="float:right; margin-left:145px;">
+							<img class="button_spin" id="share_button" src="layout/share.png" alt="Spin" />
+						</div>
+						<div align="center"  style="margin-left:-10px;">
+							<img class="button_spin_remain" id="spin_button" src="layout/left3.png" alt="Spin"  />
+						</div>
+						<div align="center" id="spins_remaining" style="margin-left:125px;color:#19a0f5; font-style:bold; margin-top:-70px;position:absolute; z-index:3;">
+							
+						</div>
+						
+						
+						
+						
+					</div>
+						
+					
+					<div align="center" style="position:absolute; top:0px; z-index:0;">
+							
+						
+										<div  class="the_wheel" align="center" valign="center">
+										
+											<canvas id="canvas" width="300" height="350">
+												<p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+											</canvas>
+										</div>
+								<div style="color:white; font-size:20px;  font-style:bold; margin-top:20px;"align="center">
+									Buy more spins
+								</div>
+								
+								<div>
+									<div style="float:left;margin-left:15px">
+										<img class="dollar_button" id="one_dollar" src="layout/1dollar.png" alt="Spin"  />
+									</div>
+									<div style="float:right; margin-left:5px;">
+										<img class="dollar_button" id="two_dollar" src="layout/2dollar.png" alt="Spin"  />
+									</div>
+								</div>
+								
+					</div>
+					
+				
+				</div>
+				
+			</div>
+				
+			</ons-page> 
+		</template>
+		
+		<!-- Menu Page -->
+		<template id="menu.html">
+			<ons-page id="menu">
+			 <div id="div_background" >
+				<div align="center" >
+					<div align="center"><img class="menu_pic"  id="pricewheel" src="layout/prize.png" alt="spin" /><div>
+					<div align="center"><img  class="menu_pic"  id="profile_bt" src="layout/profile.png" alt="spin" /><div>
+					<div align="center"><img  class="menu_pic" id="redeem_price" src="layout/currency.png" alt="spin" /><div>
+					<div align="center"><img  class="menu_button"  src="layout/winnersboard.png" alt="spin" /><div>
+					<div align="center"><img  class="menu_button"  src="layout/settings.png" alt="spin" /><div>
+					
+				</div>
+			
+				</div>
+			</ons-page> 
+		</template>
+		<!-- profile Page -->
+		<template id="profile_page.html">
+			<ons-page id="profile_page">
+				<ons-tabbar swipeable id="appTabbar" position="bottom">
+				  <ons-tab label="Profile" icon="fa-user" page="profile_inner_page.html" active></ons-tab>
+				  <ons-tab label="Edit" icon="fa-edit" page="profile_edit_page.html"></ons-tab>
+				</ons-tabbar>
+			</ons-page> 
+		</template>
+		<!-- redeem Page -->
+		<template id="redeem_prize.html">
+			<ons-page id="redeem_prize">
+				<ons-tabbar swipeable id="appTabbar" position="bottom">
+				  <ons-tab label="winnings" icon="fa-star" page="earnings_page.html" active></ons-tab>
+				  <ons-tab label="Edit" icon="fa-edit" page="reedem_account_info.html"></ons-tab>
+				</ons-tabbar>
+			</ons-page> 
+		</template>
+		<!-- Menu Page -->
+		<template id="profile_inner_page.html">
+			<ons-page id="profile_inner_page">
+
+			 <div id="div_background" >
+			 <div align="center">
+					<div  class="label_details_acc">
+							User Profile
+					</div>
+				</div>
+				<div align="left">
+					<table>
+						<tr>
+							<td >
+								Username
+							</td>
+							<td id="pro_username" >
+							</td>
+						</tr>
+						<tr>
+							<td >
+								Fullname
+							</td>
+							<td id="pro_fullname" >
+							</td>
+						</tr>
+						<tr>
+							<td >
+								Phone number
+							</td>
+							<td id="pro_phonenumber">
+							</td>
+						</tr>
+						<tr>
+							<td >
+								Email
+							</td>
+							<td id="pro_email" >
+							</td>
+						</tr>
+						<tr>
+							<td >
+								Gender
+							</td>
+							<td id="pro_gender">
+							</td>
+						</tr>
+					</table>
+				</div>
+			 
+				</div>
+				
+			</ons-page> 
+		</template>
+		<!-- Menu Page -->
+		<template id="profile_edit_page.html">
+			<ons-page id="profile_edit_page">
+			
+				 <div id="div_background">
+					<div align="center" >
+						<div align="center" id="rounded_div_2" style="margin-top:20%;"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Username" id="profile_edit_page_username" readonly/>
+							<i id="update_username_icon" style="font-size:30px;color:green;" class="fa fa-check-circle"></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Surname" id="update_surname" />
+							<i id="update_surname_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Firstanme" id="update_firstname"/>
+							<i id="update_firstname_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Othername" id="update_othername" />
+							<i id="update_othername_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Phone number" id="update_phonenumber" />
+							<i id="update_othername_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" id="rounded_div_2"> 
+							<input align="center" class="rounded_input" type="text" placeholder="Email" id="update_email" />
+							<i id="update_email_icon" style="font-size:30px;" class=""></i>
+						</div>
+						<div align="center" class="register_radio"> 
+							<input  type="radio" value="Male" name="update_gender"  checked/>Male
+							<input  type="radio" value="Female" name="update_gender" style="margin-left:30%"/>Female
+
+						</div>
+						<div align="center" id="3d_button" style="margin-top:-20px;"> 
+							<button id="update_user" class="button_div">Update</button>
+						</div>
+					</div>
+				
+				</div>
+			</ons-page> 
+		</template>
+		<template id="reedem_account_info.html">
+			<ons-page id="reedem_account_info">
+			<div id="div_background" >
+				<div align="center">
+					<div  class="label_details_acc">
+							Account Details
+					</div>
+				</div>
+				<div align="center" style="overflow:auto; height:100%;">
+					<table style="margin:5px;">
+						<tr>
+						<td style="width:100px" >Bank Name</td>
+						<td style="paddng:5px" id="bank_name"></td>
+						</tr>
+						<tr>
+						<td style="width:100px">Account Number</td>
+						<td id="account_number"></td>
+						</tr>
+						<tr>
+						<td style="width:100px">Account Name</td>
+						<td id="account_name"></td>
+						</tr>
+					</table>
+					
+				
+				</div>
+			 
+				</div>
+			</ons-page> 
+		</template>
+		<template id="earnings_page.html">
+			<ons-page id="earnings_page">
+			
+				 <div id="div_background" >
+				<div align="center">
+					<div  class="label_details_acc">
+						Winnings
+					</div>
+				</div>
+				<div style="overflow:auto; height:60%;">
+				
+					<table style="margin:5px;" id="table_winnings">
+						<tr>
+						<td >game time</td>
+						<td style="margin-left:200px;">Won</td>
+						</tr>
+						
+					</table>
+				</div>
+				<div align="center" id="3d_button"> 
+					<button id="update_user" class="button_div">Redeem</button>
+				</div>
+			 
+				</div>
+			</ons-page> 
+		</template>
+	
+	
+		
+		
+        <script>
+		 var user_id  = 0;
+		 var username = "";
+		document.addEventListener('init', function(event) {
+		
+  console.log('This is a lifecycle event!', event.target);
+			 user_id = localStorage.getItem("user_id");
+			 username = localStorage.getItem("username");
+  var page = event.target;
+  if (page.matches('#login_page')) {
+  
+			//set onkey up listeners to validate username and password
+			page.querySelector('#login_username').onkeyup = function() {
+			  var login_username_check = $('#login_username').val();
+			  	$.ajax({
+						type:"POST",  //Request type
+						url: "http://cecoeng.com/spinthewheel/php_scripts/username_check.php",   
+						data:{login_username_check:login_username_check},
+						cache:false,
+						success:function(data) {
+						if(data > 0){
+							$('#login_username_icon').css("color", "green");
+							document.getElementById('login_username_icon').className = "fa fa-check-circle";
+						}else{
+						$('#login_username_icon').css("color", "red");
+							document.getElementById('login_username_icon').className = "fa fa-times-circle";
+						}
+						
+						}
+					});
+			};
+			page.querySelector('#login_password').onkeyup = function() {
+			var login_password_check = $('#login_password').val();
+			  if($.trim(login_password_check).length>0){
+					$('#password_icon').css("color", "green");
+					document.getElementById('password_icon').className = "fa fa-check-circle";
+			  }else{
+					$('#password_icon').css("color", "red");
+					document.getElementById('password_icon').className = "fa fa-times-circle";
+			  }
+			};
+			//set onkey up listeners to validate username and password end here
+	
+			//page.querySelector('ons-toolbar .center').innerHTML = 'LOGIN';
+			//set onlick listener for login button
+			page.querySelector('#login').onclick = function() {
+				 var login_username = $('#login_username').val();
+				 var login_password = $('#login_password').val();
+				 if(login_username == ""){
+					 ons.notification.alert('Username cannot be empty');
+				 }else if(login_password == ""){
+					ons.notification.alert('Password cannot be empty');
+				 }else{
+					login_user(login_username, login_password);
+				 }
+			 
+			};
+			//set onlick listener for regiter button, this buttonwill navigate to the registration page
+			 page.querySelector('#signup').onclick = function() {
+				  document.querySelector('#my_navigator').pushPage('registration_page.html');
+			};
+	  }
+	  else if(page.matches('#registration_page')){
+	  			//set onkey up listeners to validate username and password
+			page.querySelector('#username').onkeyup = function() {
+			  var username = $('#username').val();
+			  	$.ajax({
+						type:"POST",  //Request type
+						url: "http://cecoeng.com/spinthewheel/php_scripts/username_check.php",   
+						data:{login_username_check:username},
+						cache:false,
+						success:function(data) {
+						if(data > 0){
+							$('#reg_username_icon').css("color", "red");
+							document.getElementById('reg_username_icon').className = "fa fa-times-circle";
+						}else{
+						
+							$('#reg_username_icon').css("color", "green");
+							document.getElementById('reg_username_icon').className = "fa fa-check-circle";
+						}
+						
+						}
+					});
+			};	
+			//set onkey up listeners to validate username and password
+			page.querySelector('#phonenumber').onkeyup = function() {
+			  var phonenumber = $('#phonenumber').val();
+			  
+						if(phonenumber > 0){
+							$('#phonenumber_icon').css("color", "green");
+							document.getElementById('phonenumber_icon').className = "fa fa-check-circle";
+						}else{
+						$('#phonenumber_icon').css("color", "red");
+							document.getElementById('phonenumber_icon').className = "fa fa-times-circle";
+						}
+			};
+			//set onkey up listeners to validate username and password
+			page.querySelector('#password').onkeyup = function() {
+			  var password = $('#password').val();
+			  
+						if($.trim(password).length>0){
+							$('#reg_password_icon').css("color", "green");
+							document.getElementById('reg_password_icon').className = "fa fa-check-circle";
+						}else{
+						$('#reg_password_icon').css("color", "red");
+							document.getElementById('reg_password_icon').className = "fa fa-times-circle";
+						}
+			};
+			//set onkey up listeners to validate username and password
+			page.querySelector('#confirm_password').onkeyup = function() {
+			  var password = $('#password').val();
+			  var confirm_password = $('#confirm_password').val();
+			  
+						if(confirm_password == password ){
+							$('#confirm_password_icon').css("color", "green");
+							document.getElementById('confirm_password_icon').className = "fa fa-check-circle";
+						}else{
+						$('#confirm_password_icon').css("color", "red");
+							document.getElementById('confirm_password_icon').className = "fa fa-times-circle";
+						}
+			};
+		//set onlick listener for regiter button
+			 page.querySelector('#register_user').onclick = function() {
+						var username = document.getElementById("username").value;
+						var phonenumber = document.getElementById("phonenumber").value;
+						var password = document.getElementById("password").value;
+						var confirm_password = document.getElementById("confirm_password").value;
+						var radioValue = $("input[name='gender']:checked").val();
+						var user_reg_status;
+						var status = 0;
+						if(username == ""){
+							ons.notification.alert('USername cannot be empty');
+						}else if(phonenumber ==""){
+							ons.notification.alert('Phone number cannot be empty');
+						}else if(password == ""){
+							ons.notification.alert('Password cannot be empty');
+						}else if(confirm_password == ""){
+							ons.notification.alert('Confirm password cannot be empty');
+						}
+						if(password != confirm_password){
+							ons.notification.alert('Password didnt match');
+							status = 1;
+						}
+						if(status == 0){
+							user_reg_status = register_user(username, phonenumber, password,radioValue);
+						}
+						
+					
+				  //document.querySelector('#my_navigator').pushPage('main_menu_page.html');
+			};
+			//set onlick listener for regiter button
+			 page.querySelector('#login_image').onclick = function() {
+					
+				  document.querySelector('#my_navigator').pushPage('login_page.html');
+			
+			};
+	  } else if(page.matches('#menu')){
+			 user_id = localStorage.getItem("user_id");
+			 username = localStorage.getItem("username");
+			
+			if(user_id == 0){
+				document.querySelector('#my_navigator').pushPage('login_page.html');
+			}
+		//set onlick listener for profile button
+			 page.querySelector('#profile_bt').onclick = function() {
+					
+				  document.querySelector('#my_navigator').pushPage('profile_page.html');
+			};
+			//set onlick listener for spin the button
+			 page.querySelector('#pricewheel').onclick = function() {
+					
+				  document.querySelector('#my_navigator').pushPage('main_menu_page.html');
+			};
+			//set onclick listener for redeem button
+			page.querySelector('#redeem_price').onclick = function(){
+				document.querySelector('#my_navigator').pushPage('redeem_prize.html');
+			
+			};
+	  }else if(page.matches('#main_menu_page')){
+			if(user_id == 0){
+				
+					document.querySelector('#my_navigator').pushPage('login.html');
+				}else{
+					var daily_spin_allocation = dailySpinAllocator(user_id);
+					 $.ajax({
+							type:"POST",  //Request type
+							url: "http://cecoeng.com/spinthewheel/php_scripts/spincalculator.php",   
+							data:{user_id:user_id},
+							cache:false,
+							success:function(data) {
+							  if(data > 0){
+								document.getElementById('spins_remaining').innerHTML = '<span style="margin-left:0px;color:#19a0f5; font-size:12px;font-weight:bold;">'+ data +' Spins Left</span>';
+							  }
+							   
+							}
+						});
+				}
+									var theWheel = new Winwheel({
+                'numSegments'  : 15,     // Specify number of segments.
+                'outerRadius'  : 140,   // Set outer radius so wheel fits inside the background.
+                'textFontSize' : 28,    // Set font size as desired.
+                'segments'     :        // Define segments including colour and text.
+                [
+                   {'fillStyle' : '#eae56f', 'text' : '1'},
+                   {'fillStyle' : '#89f26e', 'text' : '2'},
+                   {'fillStyle' : '#7de6ef', 'text' : '3'},
+                   {'fillStyle' : '#e7706f', 'text' : '4'},
+                   {'fillStyle' : '#eae56f', 'text' : '5'},
+                   {'fillStyle' : '#89f26e', 'text' : '6'},
+                   {'fillStyle' : '#7de6ef', 'text' : '7'},
+                   {'fillStyle' : '#e7706f', 'text' : '8'},
+                   {'fillStyle' : '#eae56f', 'text' : '9'},
+                   {'fillStyle' : '#89f26e', 'text' : '10'},
+                   {'fillStyle' : '#7de6ef', 'text' : '11'},
+                   {'fillStyle' : '#eae56f', 'text' : '12'},
+                   {'fillStyle' : '#e7706f', 'text' : '13'},
+                   {'fillStyle' : '#7de6ef', 'text' : '14'},
+                   {'fillStyle' : '#89f26e', 'text' : '15'}
+                ],
+                'animation' :           // Specify the animation to use.
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 15,
+                    'spins'    : 8,
+                    'callbackFinished' : alertPrize,
+                    'callbackSound'    : playSound,   // Function to call when the tick sound is to be triggered.
+                    'soundTrigger'     : 'segment'        // Specify pins are to trigger the sound, the other option is 'segment'.
+                },
+                'pins' :
+                {
+                    'number' : 15   // Number of pins. They space evenly around the wheel.
+                }
+            });
+			//set variables
+			//var  width = window.screen.width * 0.5;
+			//var  height = window.screen.height * 0.3;
+			//var  width_wheel  = window.screen.width * 0.3;
+			//var  height_wheel  = window.screen.height * 0.8;
+		
+			
+		// -----------------------------------------------------------------
+            // This function is called when the segment under the prize pointer changes
+            // we can play a small tick sound here like you would expect on real prizewheels.
+            // -----------------------------------------------------------------
+            var audio = new Audio('tick.mp3');  // Create audio object and load tick.mp3 file.
+            function playSound()
+            {
+                // Stop and rewind the sound if it already happens to be playing.
+                audio.pause();
+                audio.currentTime = 0;
+                // Play the sound.
+                audio.play();
+            }
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
+            // note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment)
+            {
+                // Do basic alert of the segment text.
+                // You would probably want to do something more interesting with this information.
+				//alert("You have won " + indicatedSegment.text);
+				reduceSpinBalance(user_id);
+				updateRewards(user_id,indicatedSegment.text);
+				//document.getElementById('popup').style.display = 'block';
+				//ons.notification.alert("You have won " + indicatedSegment.text);
+				//resetWheel();		
+						
+						$('#score_username').text(username);
+						$('#score_value').text(indicatedSegment.text);
+						$('#popup').show();
+						$('#spin_button').show();
+						
+				
+            }
+            // =======================================================================================================================
+            // Code below for the power controls etc which is entirely optional. You can spin the wheel simply by
+            // calling theWheel.startAnimation();
+            // =======================================================================================================================
+            var wheelPower    = 3;
+            var wheelSpinning = false;
+            // -------------------------------------------------------
+            // Function to handle the onClick on the power buttons.
+            // -------------------------------------------------------
+            function powerSelected(powerLevel)
+            {
+                // Ensure that power can't be changed while wheel is spinning.
+                if (wheelSpinning == false)
+                {
+                    // Reset all to grey incase this is not the first time the user has selected the power.
+                    document.getElementById('pw1').className = "";
+                    document.getElementById('pw2').className = "";
+                    document.getElementById('pw3').className = "";
+                    // Now light up all cells below-and-including the one selected by changing the class.
+                    if (powerLevel >= 1)
+                    {
+                        document.getElementById('pw1').className = "pw1";
+                    }
+                    if (powerLevel >= 2)
+                    {
+                        document.getElementById('pw2').className = "pw2";
+                    }
+                    if (powerLevel >= 3)
+                    {
+                        document.getElementById('pw3').className = "pw3";
+                    }
+                    // Set wheelPower var used when spin button is clicked.
+                    wheelPower = 3;
+                    // Light up the spin button by changing it's source image and adding a clickable class to it.
+                    document.getElementById('spin_button').src = "layout/spin_button.png";
+                    document.getElementById('spin_button').className = "clickable";
+                }
+            }
+            function startSpin()
+            {	
+				
+			
+			  // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false)
+                {
+                
+					theWheel.animation.spins = 15;
+                    // Disable the spin button so can't click again while wheel is spinning.
+					//$('#spin_button').hide();
+                    //document.getElementById('spin_button').src  = "layout/spin_button.png";
+                    document.getElementById('spin_button').className = "button_spin clickable";
+					
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+                }
+				 
+            }
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            function resetWheel()
+            {
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+               // document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+               // document.getElementById('pw2').className = "";
+               // document.getElementById('pw3').className = "";
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            }
+		  // -------------------------------------------------------
+		  
+            // Click handler for spin button.
+            // -------------------------------------------------------
+			//set onlick listener for regiter button, this button will navigate to the registration page
+			 page.querySelector('#spin_button').onclick = function() {
+			 
+			 $.ajax({
+						type:"POST",  //Request type
+						url: "http://cecoeng.com/spinthewheel/php_scripts/spincalculator.php",   
+						data:{user_id:user_id},
+						cache:false,
+						success:function(data) {
+						  if(data > 0){
+							var sp = data - 1;
+							document.getElementById('spins_remaining').innerHTML = '<span style="margin-left:0px;color:#19a0f5;font-size:12px;font-weight:bold;">'+ sp +' Spins Left</span>';
+							startSpin();
+						  }else{
+							ons.notification.alert('You have '+data+" Spins left");
+						  }
+						   
+						}
+					});
+				
+				 
+				
+			};
+			
+			//set onclick listener for share button
+			page.querySelector('#exit_msg').onclick = function(){
+						resetWheel();		
+						
+						$('#popup').hide();
+			
+			};
+			//set onclick listener for share button
+			page.querySelector('#share_button').onclick = function(){
+				window.plugins.socialsharing.share('Play and win amazaing rewards, powered by Donkey Technologies', null, null, 'http://www.facebook.com');
+			
+			};
+			//set onclick listener for share button
+			page.querySelector('#one_dollar').onclick = function(){
+				alert(1);
+			
+			};
+			//set onclick listener for share button
+			page.querySelector('#two_dollar').onclick = function(){
+				alert(2);
+			
+			};
+			
+	  }else if(page.matches("#profile_edit_page")){
+				$('#profile_edit_page_username').val(username);
+				var profile_page_surname = localStorage.getItem("surname");
+				var profile_page_firstname =localStorage.getItem("firstname");
+				var profile_page_othername =localStorage.getItem("othername");
+				var profile_page_phonenumber =localStorage.getItem("phonenumber");
+				var profile_page_email =localStorage.getItem("email");
+				var profile_page_gender = localStorage.getItem("gender");
+				$('#update_surname').val(profile_page_surname);
+				$('#update_firstname').val(profile_page_firstname);
+				$('#update_othername').val(profile_page_othername);
+				$('#update_phonenumber').val(profile_page_phonenumber);
+				$('#update_email').val(profile_page_email);
+			//set onclick listener for share button
+			page.querySelector('#update_user').onclick = function(){
+					var update_surname = $('#update_surname').val();
+						var update_firstname = $('#update_firstname').val();
+						var update_othername = $('#update_othername').val();
+						var update_phonenumber = $('#update_phonenumber').val();
+						var update_email = $('#update_email').val();
+						var update_gender = $("input[name='update_gender']:checked").val();
+						if(update_surname==""){
+							ons.notification.alert('Enter Surname');
+						}else if(update_firstname==""){
+							ons.notification.alert('Enter Firstname');
+						}else if(update_phonenumber==""){
+							ons.notification.alert('Enter Phone number');
+						}else if(update_email==""){
+							ons.notification.alert('Enter Email');
+						}else{
+							update_user_profile(user_id, update_surname, update_firstname, update_othername, update_phonenumber, update_email, update_gender);
+						}
+						
+			
+			};
+	  
+	  }else if(page.matches("#profile_inner_page")){
+				$('#pro_username').text(username);
+				var profile_page_surname = localStorage.getItem("surname");
+				var profile_page_firstname =localStorage.getItem("firstname");
+				var profile_page_othername =localStorage.getItem("othername");
+				var profile_page_phonenumber =localStorage.getItem("phonenumber");
+				var profile_page_email =localStorage.getItem("email");
+				var profile_page_gender = localStorage.getItem("gender");
+				$('#pro_fullname').text(profile_page_surname+" "+profile_page_firstname+" "+profile_page_othername);
+				$('#pro_phonenumber').text(profile_page_phonenumber);
+				$('#pro_email').text(profile_page_email);
+				$('#pro_gender').text(profile_page_gender);
+	  }else if(page.matches("#earnings_page")){
+		winning_retrieve(user_id);
+				
+	  }else if(page.matches("#reedem_account_info")){
+			bank_retrieve(user_id);
+				
+	  }
+	  
+	
+	});
+		
+
+			function signup_click(){
+				alert("signup");
+			}
+        </script>
+		    <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
