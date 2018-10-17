@@ -1,0 +1,378 @@
+/*
+Description:
+    Contains all the styles for the winning wheel page.
+    
+Verison History:
+    2012-01-28, Douglas McKechie
+    - Created based off earlier version.
+    
+    2015-09-26, Douglas McKechie
+    - Minor updates for the 2.0 winwheel example.
+*/
+
+body
+{
+    font-family: arial;
+	
+	
+}
+.displaynone{
+	display:none;
+}
+.checks{
+	color:green;
+}
+.times{
+	color:red;
+}
+.profile{
+
+	margin-left:10px;
+	margin-right:10px;
+	border-radius : 10px;
+	height:5%;
+	background-color: white;
+	padding:10px;
+	font-size:20px;
+	font-weight:bold;
+	
+
+
+}
+ tr td:first-child {
+ padding-left:0px;
+ width:250px;
+ }
+ td {padding:10px 0px 10px 50px;}
+ 
+.label_details_acc{
+	margin-top:20%;
+	margin-left:10px;
+	padding:10px;
+	border-radius : 10px;
+	background-color: green;
+	color:purple;
+	width:250px;
+	height:40px;
+	font-size:20px;
+	fomt-weight:bold;
+	color:white;
+	background-color:purple;
+}
+.label_details{
+	margin-top:20%;
+	margin-left:10px;
+	padding:10px;
+	border-radius : 30px;
+	background-color: green;
+	color:purple;
+	width:100px;
+}
+.acc{
+	margin-left:10px;
+	margin-right:10px;
+	border-radius : 10px;
+	background-color: white;
+	padding:10px;
+	font-size:20px;
+	font-weight:bold;
+	
+
+
+}
+.label_details2{
+	margin-top:5px;
+	margin-left:10px;
+	padding:10px;
+	border-radius : 30px;
+	background-color: green;
+	color:purple;
+	width:100px;
+}
+#rounded_div{
+	border-radius : 25px;
+	height:8%;
+	background-color: white;
+	margin-top:50%;
+	width:70%;
+	overflow:hidden;
+}
+#rounded_div_2{
+	border-radius : 25px;
+	height:8%;
+	background-color: white;
+	margin-top:5%;
+	width:70%;
+	overflow:hidden;
+}
+.3d_button{
+	height:5%;
+	margin-top:5%;
+	width:70%;
+	overflow:hidden;
+	background-color: #19c8f5;
+}
+.button_div{
+    display: inline-block;
+    text-decoration: none;
+	width:70%;
+	height:7%;
+	margin-top:7%;
+    color: #fff;
+    font-weight: bold;
+    background-color: #19c8f5;
+    padding: 10px 70px;
+    font-size: 20px;
+	text-align: center;
+    border: 1px solid #2d6898;
+    background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -moz-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -webkit-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+    background-image: -ms-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
+ 
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0, rgb(73,132,180)),
+        color-stop(1, rgb(97,155,203))
+    );
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    -moz-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+    box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
+}
+
+.rounded_input{
+	border : none;
+	border-color : transparent;
+	margin-left:5px;
+	width: 85%;
+	height:100%;
+	 padding: 3px 10px;
+    font-size: 20px;
+	
+	display:inline-block;
+}
+.menu_pic{
+	width:100px;
+	margin-top:20px;
+	margin-left:0px;
+}
+.menu_button{
+	width:300px;
+	height:50px;
+	margin-top:15px;
+}
+#div_background{
+
+	background-image: url(../layout/background1.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-position: absolute;
+	width:100%;
+	height:100%;
+	margin-top:0%;
+	overflow:hidden;
+}	
+		.ontop-inner{
+				background-image: url(../layout/msg.png);
+				background-repeat: no-repeat;
+				margin-top:100px;
+				background-size: 100% 100%;
+				background-position: absolute;
+				width: 300px;
+				height: 400px;
+				
+		}
+		.ontop {
+				z-index: 999;
+				width: 100%;
+				height: 100%;
+				display: none;
+				position: absolute;				
+				background-position: absolute;
+				color: #aaaaaa;
+				opacity: 1;
+				filter: alpha(opacity = 50);
+			}
+			#popup {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				color: #000000;
+					margin-top:-30px;
+				
+
+				
+			}
+#register_rounded_div{
+	border-radius : 25px;
+	height:8%;
+	background-color: white;
+	margin-top:30%;
+	width:70%;
+	overflow:hidden;
+}
+.pro_rounded_div{
+	border-radius : 25px;
+	height:8%;
+	background-color: white;
+	margin-top:20%;
+	width:70%;
+	overflow:hidden;
+}
+.register_radio{
+height:7%;
+	background-color: none;
+	margin-top:5%;
+
+	width:70%;
+	overflow:hidden;
+	font-size : 14px;
+	font-weight: bold;
+	color:white;
+}
+      .profile-pic {
+        width: 200px;
+        background-color: #fff;
+        margin: 20px auto 10px;
+        border: 1px solid #999;
+        border-radius: 4px;
+      }
+
+      .profile-pic > img {
+        display: block;
+        max-width: 100%;
+      }
+
+#name_input{
+	margin-top:40%;
+	margin-left: 25%;
+}
+#name_input_2{
+	margin-left: 25%;
+}
+#facebook_login{
+	margin-top:20%;
+}
+#or{
+	margin-top:5%;
+}
+#sign_up_image{
+	margin-top:3%;
+}
+/* Sets the background image for the wheel */
+div.the_wheel
+{
+    background-image: url(../wheel_back1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+	background-size: cover;
+	width:300px;
+	margin-top:50px;
+	margin-left:30px;
+}
+.button_spin{
+
+	width:100px;
+	height:35px;
+	margin-top:50px;
+	
+
+}
+.button_spin_remain{
+	width:120px;
+	margin-top:-70px;
+}
+.dollar_button{
+	width:160px;
+	height:50px;
+	margin-top:10px;
+}
+
+/* Do some css reset on selected elements */
+h1, p
+{
+    margin: 0;
+}
+
+div.power_controls
+{
+    margin-right:70px;
+}
+
+div.html5_logo
+{
+    margin-left:70px;
+}
+
+/* Styles for the power selection controls */
+table.power
+{
+    background-color: #cccccc;
+    cursor: pointer;
+    border:1px solid #333333;
+}
+
+table.power th
+{
+    background-color: white;
+    cursor: default;
+}
+
+td.pw1
+{
+    background-color: #6fe8f0;
+}
+
+td.pw2
+{
+    background-color: #86ef6f;
+}
+
+td.pw3
+{
+    background-color: #ef6f6f;
+}
+
+/* Style applied to the spin button once a power has been selected */
+.clickable
+{
+    cursor: pointer;
+}
+
+/* Other misc styles */
+.margin_bottom
+{
+    margin-bottom: 5px;
+}
+    .profile-pic {
+        width: 150px;
+        margin: 20px auto 10px;
+
+      }
+
+      .profile-pic > img {
+        display: inline;
+        max-width: 100%;
+		width: 50px;
+      }
+
+	  .menu-td{
+		width: 50px;
+		height:50px;
+		padding:10px;
+	  }
+	   .menu-td  > img {
+		width: 150px;
+		
+	   }
+
+      ons-list-item {
+        color: #444;
+      }
