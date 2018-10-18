@@ -550,8 +550,8 @@
 			
 			if(user_id == 0){
 				document.querySelector('#my_navigator').pushPage('login_page.html');
-			}else{
-				alert(user_id);
+			}else if(user_id == ""){
+				document.querySelector('#my_navigator').pushPage('login_page.html');
 			}
 		//set onlick listener for profile button
 			 page.querySelector('#profile_bt').onclick = function() {
