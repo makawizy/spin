@@ -1,6 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.donkeytechnology.spinthewheel" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>SpinTheWheel</name>
+<edit-config file="AndroidManifest.xml" mode="merge" target="/manifest/application/activity">
+    <activity android:configChanges="orientation|keyboardHidden" android:windowSoftInputMode="adjustPan" />
+</edit-config>    
+<name>SpinTheWheel</name>
     <description>
         Hello World sample application that responds to the deviceready event.
     </description>
