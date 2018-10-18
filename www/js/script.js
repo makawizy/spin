@@ -1,5 +1,10 @@
 	function register_user(username, phonenumber, password, radioValue){
-			
+			localStorage.setItem("surname","");
+			localStorage.setItem("firstname", "");
+			localStorage.setItem("othername", "");
+			localStorage.setItem("phonenumber", "");
+			localStorage.setItem("email", "");
+			localStorage.setItem("gender", "");
 			$.ajax({
 						type:"POST",  //Request type
 						url: "http://cecoeng.com/spinthewheel/php_scripts/register_user.php",   
