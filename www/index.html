@@ -396,7 +396,6 @@
   console.log('This is a lifecycle event!', event.target);
 			 user_id = localStorage.getItem("user_id");
 			 username = localStorage.getItem("username");
-			alert(user_id);
   var page = event.target;
   if (page.matches('#login_page')) {
   
@@ -551,7 +550,7 @@
 			
 			if(user_id == 0){
 				document.querySelector('#my_navigator').pushPage('login_page.html');
-			}else if(user_id == ""){
+			}else if(user_id == null){
 				document.querySelector('#my_navigator').pushPage('login_page.html');
 			}
 		//set onlick listener for profile button
