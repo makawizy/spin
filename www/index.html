@@ -389,6 +389,10 @@
 		
 		
         <script>
+				 // on page finished loading
+document.addEventListener("deviceready", function() {
+resize();
+}, false);
 		 var user_id  = 0;
 		 var username = "";
 		document.addEventListener('init', function(event) {
@@ -837,6 +841,9 @@
 				$('#pro_phonenumber').text(profile_page_phonenumber);
 				$('#pro_email').text(profile_page_email);
 				$('#pro_gender').text(profile_page_gender);
+		  		if(profile_page_surname == null){
+					retrieve_user_profile(user_id);
+				}
 	  }else if(page.matches("#earnings_page")){
 		winning_retrieve(user_id);
 				
