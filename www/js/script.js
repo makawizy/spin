@@ -160,4 +160,68 @@ $.ajax({
         });
 	
 	}
+function retrieve_user_profile(user_id){
+		 var url = "http://cecoeng.com/spinthewheel/php_scripts/retrieve_user_profile.php";
+        $.getJSON(url,{user_id:user_id}, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                var surname = field.surname;
+				var firstname = field.firstname;
+				var othername = field.middlename;
+				var phone_number = field.phone_number;
+				var email = field.email;
+				var gender = field.gender;
+				$('#pro_fullname').text(surname+" "+firstname+" "+othername);
+				$('#pro_phonenumber').text(phone_number);
+				$('#pro_email').text(email);
+				$('#pro_gender').text(gender);
+								localStorage.setItem("surname",surname);
+								localStorage.setItem("firstname", firstname);
+								localStorage.setItem("othername", othername);
+								localStorage.setItem("phonenumber", phone_number);
+								localStorage.setItem("email", email);
+								localStorage.setItem("gender", gender);
+				   
+            });
+        });
+	
+	}
+	// -------------------------------------
+	// resize layout for device screen
+	// -------------------------------------
+	function resize() {
+		// resize menu area and game area to full screen
+		var windowwidth = $(window).width();
+		var windowheight = $(window).height();
+				// resize all menu elements
+		var basesize = $(window).height() / 20; // base=32px
+		
+		$('body, html').css({
+			"font-size": basesize+"px",
+			"width": windowwidth+"px",
+			"height": windowheight+"px"
+		});
+		$('#div_background').css({
+			"font-size": basesize+"px",
+			"width": windowwidth+"px",
+			"height": windowheight+"px"
+		});
+		$('#rounded_div').css({
+			"width": (windowwidth*0.7)+"px",
+			"height": (windowheight*0.08)+"px",
+			"margin-top": (windowheight*0.2)+"px"
+		
+		});
+		$('#menu_pic').css({
+			"width": (windowwidth*0.2)+"px",
+			"margin-top": (windowheight*0.1)+"px"
+		
+		});
+		$('#register_rounded_div').css({
+			"width": (windowwidth*0.7)+"px",
+			"height": (windowheight*0.08)+"px",
+			"margin-top": (windowheight*0.15)+"px"
+		
+		});
+	}
 	
